@@ -10,7 +10,7 @@ export const getDescription = () => {
 
 export const getPlans = () => {
   const textPlans = document.querySelector(".plans");
-  return textPlans.innerText;
+  return textPlans.innerHTML;
 };
 
 export const getGoal = () => {
