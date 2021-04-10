@@ -8,4 +8,3 @@ export const squaredNumbers = () => {
   });
   return newAtribute;
 };
-squaredNumbers();
