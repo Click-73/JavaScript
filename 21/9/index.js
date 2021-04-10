@@ -1,4 +1,4 @@
-const finishList = () => {
+export const finishList = () => {
   const ulElem = document.querySelector(".list");
   const ulLiElem = document.querySelector(".special");
 
