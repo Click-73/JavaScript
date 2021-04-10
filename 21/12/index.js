@@ -1,5 +1,5 @@
 export const squaredNumbers = () => {
-  const atribute = document.querySelector(".number");
+  const atribute = document.querySelectorAll(".number");
   const newAtribute = [...atribute].map((item) => {
     const numberAtribute = item.dataset.number;
     const itemNew = item;
