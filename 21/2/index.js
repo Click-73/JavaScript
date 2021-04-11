@@ -1,16 +1,3 @@
-export const getTitleElement = () => {
-  const titleElem = document.querySelector(".title");
-  console.dir(titleElem);
-  return titleElem;
-};
-
-export const getInputElement = () => {
-  const inputElem = document.querySelector("input");
-  const inputElemAtrib = inputElem.getAttribute("type", "text");
-  console.dir(inputElem);
-  return inputElem;
-};
-
 // export const getTitleElement = () => {
 //   const titleElem = document.querySelector(".title");
 //   console.dir(titleElem);
@@ -18,7 +5,21 @@ export const getInputElement = () => {
 // };
 
 // export const getInputElement = () => {
-//   const inputElem = document.querySelector('[type="text"]');
+//   const inputElem = document
+//     .querySelector("input")
+//     .getAttribute("type", "text");
 //   console.dir(inputElem);
 //   return inputElem;
 // };
+
+export const getTitleElement = () => {
+  const titleElem = document.querySelector(".title");
+  console.dir(titleElem);
+  return titleElem;
+};
+
+export const getInputElement = () => {
+  const inputElem = document.querySelector('[type="text"]');
+  console.dir(inputElem);
+  return inputElem;
+};
