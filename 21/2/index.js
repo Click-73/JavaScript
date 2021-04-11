@@ -19,7 +19,7 @@ export const getTitleElement = () => {
 };
 
 export const getInputElement = () => {
-  const inputElem = document.querySelector("[type='text']");
+  const inputElem = document.querySelector('[type="text"]');
   console.dir(inputElem);
   return inputElem;
 };
