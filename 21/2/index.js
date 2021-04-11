@@ -3,6 +3,7 @@ export const getTitleElement = () => {
   console.dir(titleElem);
   return titleElem;
 };
+
 export const getInputElement = () => {
   const inputElem = document
     .querySelector("input")
