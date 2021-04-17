@@ -1,4 +1,4 @@
-const todoElem = document.querySelector(".todo-list");
+const todoEl = document.querySelector(".todo-list");
 const listElem = document.querySelector(".list");
 const inputTextElem = document.querySelector(".task-input");
 const creatButtonElem = document.querySelector(".btn");
@@ -13,15 +13,16 @@ const tasks = [
 
 const renderTasks = (tasksList) => {
   listElem.innerHTML = "";
-  inputTextElem.innerHTML = "";
+  inputTextElem.value = "";
+
   const tasksElems = tasksList
     .sort((a, b) => a.done - b.done)
     .map(({ text, done, id }) => {
       const listItemElem = document.createElement("li");
       listItemElem.classList.add("list__item");
       const checkbox = document.createElement("input");
-      checkbox.setAttribute("type", "checkbox");
       checkbox.setAttribute("data-id", id);
+      checkbox.setAttribute("type", "checkbox");
       checkbox.checked = done;
       checkbox.classList.add("list__item-checkbox");
       if (done) {
@@ -35,22 +36,20 @@ const renderTasks = (tasksList) => {
   listElem.append(...tasksElems);
 };
 
-// // <-- -->
-const onClickHandler = (item) => {
-  const idNum = tasks.length; // величина айди (для новых записей)
-  const inputTask = inputTextElem.value; // введенный текст листа
+renderTasks(tasks);
+
+const changeClick = (item) => {
+  const idNum = tasks.length;
+  const newTaskText = inputTextElem.value;
 
   if (item.target.className === "list__item-checkbox") {
-    // проверяет был ли клик на чекбоксе
-
-    const targetEl = tasks.find((el) => el.id === +item.target.dataset.id); // ищет 1й єлемент в масиве который с таким же айди КАК и элемент на который кликнули( унарный плюс для приведения с НАМБЕР)
-    targetEl.done = item.target.checked; // присваевание в ДОН тру или фолс в соответсвии с флажком
+    const targetEl = tasks.find((el) => el.id === +item.target.dataset.id);
+    targetEl.done = item.target.checked;
   }
 
-  if (item.target === creatButtonElem && inputTask !== "") {
-    // При нажатии на кнопку и не пустое значение добавит элемент
+  if (item.target === creatButtonElem && newTaskText !== "") {
     const newTaskObj = {
-      text: inputTask,
+      text: newTaskText,
       done: false,
       id: idNum + 1,
     };
@@ -60,38 +59,4 @@ const onClickHandler = (item) => {
   renderTasks(tasks);
 };
 
-todoElem.addEventListener("click", onClickHandler);
-
-// <-- -->
-// const insideListTask = () => {
-//   const inputTask = inputTextElem.value;
-//   const idNum = tasks.length;
-//   if (inputTask === "") {
-//     return;
-//   }
-//   tasks.push({ text: inputTask,
-//          done: false,
-//          id: idNum });
-//   inputTextElem.value = "";
-//   renderTasks(tasks);
-// };
-
-// creatButtonElem.addEventListener("click", insideListTask);
-
-// const anotherTask = (event) => {
-//   const isCheckbox = event.target.classlist.contains("list__item-checkbox");
-
-//   if (!isCheckbox) {
-//     return;
-//   }
-
-//   const choseCheckbox = event.target.dataset.id;
-//   const choseTask = tasks.find((el) => el.id === choseCheckbox);
-//   choseTask.done = event.target.checked;
-
-//   renderTasks(tasks);
-// };
-
-// listElem.addEventListener("click", anotherTask);
-
-// renderTasks(tasks);
+todoEl.addEventListener("click", changeClick);
