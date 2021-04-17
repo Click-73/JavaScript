@@ -57,6 +57,7 @@ const changeClick = (item) => {
   }
 
   renderTasks(tasks);
+  inputTextElem.value = "";
 };
 
 todoEl.addEventListener("click", changeClick);
