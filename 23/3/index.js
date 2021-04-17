@@ -1,7 +1,7 @@
 const todoEl = document.querySelector(".todo-list");
 const listElem = document.querySelector(".list");
 const inputTextElem = document.querySelector(".task-input");
-const creatButtonElem = document.querySelector(".btn");
+const creatButtonElem = document.querySelector(".create-task-btn");
 
 const tasks = [
   { text: "Buy milk", done: false, id: 1 },
