@@ -35,35 +35,63 @@ const renderTasks = (tasksList) => {
   listElem.append(...tasksElems);
 };
 
+// // <-- -->
+const onClickHandler = (item) => {
+  const idNum = tasks.length; // величина айди (для новых записей)
+  const inputTask = inputTextElem.value; // введенный текст листа
+
+  if (item.target.className === "list__item-checkbox") {
+    // проверяет был ли клик на чекбоксе
+
+    const targetEl = tasks.find((el) => el.id === +item.target.dataset.id); // ищет 1й єлемент в масиве который с таким же айди КАК и элемент на который кликнули( унарный плюс для приведения с НАМБЕР)
+    targetEl.done = item.target.checked; // присваевание в ДОН тру или фолс в соответсвии с флажком
+  }
+
+  if (item.target === creatButtonElem && inputTask !== "") {
+    // При нажатии на кнопку и не пустое значение добавит элемент
+    const newTaskObj = {
+      text: inputTask,
+      done: false,
+      id: idNum + 1,
+    };
+    tasks.push(newTaskObj);
+  }
+
+  renderTasks(tasks);
+};
+
+todoElem.addEventListener("click", onClickHandler);
+
 // <-- -->
+// const insideListTask = () => {
+//   const inputTask = inputTextElem.value;
+//   const idNum = tasks.length;
+//   if (inputTask === "") {
+//     return;
+//   }
+//   tasks.push({ text: inputTask,
+//          done: false,
+//          id: idNum });
+//   inputTextElem.value = "";
+//   renderTasks(tasks);
+// };
 
-const insideListTask = () => {
-  const inputTask = inputTextElem.value;
-  const idNum = tasks.length;
-  if (inputTask === "") {
-    return;
-  }
-  tasks.push({ text: inputTask, done: false, id: idNum });
-  inputTextElem.value = "";
-  renderTasks(tasks);
-};
+// creatButtonElem.addEventListener("click", insideListTask);
 
-creatButtonElem.addEventListener("click", insideListTask);
+// const anotherTask = (event) => {
+//   const isCheckbox = event.target.classlist.contains("list__item-checkbox");
 
-const anotherTask = (event) => {
-  const isCheckbox = event.target.classlist.contains("list__item-checkbox");
+//   if (!isCheckbox) {
+//     return;
+//   }
 
-  if (!isCheckbox) {
-    return;
-  }
+//   const choseCheckbox = event.target.dataset.id;
+//   const choseTask = tasks.find((el) => el.id === choseCheckbox);
+//   choseTask.done = event.target.checked;
 
-  const choseCheckbox = event.target.dataset.id;
-  const choseTask = tasks.find((el) => el.id === choseCheckbox);
-  choseTask.done = event.target.checked;
+//   renderTasks(tasks);
+// };
 
-  renderTasks(tasks);
-};
+// listElem.addEventListener("click", anotherTask);
 
-listElem.addEventListener("click", anotherTask);
-
-renderTasks(tasks);
+// renderTasks(tasks);
