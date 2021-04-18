@@ -1,4 +1,4 @@
-const getDiff = (startDate, endDate) => {
+export const getDiff = (startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const miliSecondInDay = 86400000;
