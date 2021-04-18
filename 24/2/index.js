@@ -5,6 +5,9 @@ const formatter = new Intl.DateTimeFormat("en", {
   hour12: false,
 });
 
-const getGreenwochTime = (date) => formatter.format(date);
+const getGreenwichTime = (date) => {
+  const dataNew = date;
+  formatter.format(dataNew);
+};
 
-console.log(getGreenwochTime(new Date()));
+console.log(getGreenwichTime(new Date()));
